@@ -25,7 +25,6 @@ class LicenseNumberMixin:
                 "First 2 characters must be uppercase letters"
             )
 
-        # Check if the last 5 characters are digits
         if not license_number[3:].isdigit():
             raise ValidationError(
                 "Last 5 characters must be digits"
