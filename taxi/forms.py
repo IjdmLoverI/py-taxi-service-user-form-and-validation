@@ -10,15 +10,14 @@ class LicenseNumberMixin:
     def clean_license_number(self):
         license_number = self.cleaned_data["license_number"]
 
-        # Check if the license number consists of 8 characters
         if len(license_number) != 8:
             raise ValidationError("License number must be 8 characters long")
 
-        # Check if the first 3 characters are uppercase letters
         if not license_number[:3].isupper():
-            raise ValidationError("First 3 characters must be uppercase letters")
+            raise ValidationError(
+                "First 3 characters must be uppercase letters"
+            )
 
-        # Check if the first two characters are alphabetic (uppercase letters)
         if not license_number[:3].isalpha():
             raise ValidationError("First 2 characters must be uppercase letters")
 
