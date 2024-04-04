@@ -11,7 +11,9 @@ class LicenseNumberMixin:
         license_number = self.cleaned_data["license_number"]
 
         if len(license_number) != 8:
-            raise ValidationError("License number must be 8 characters long")
+            raise ValidationError(
+                "License number must be 8 characters long"
+            )
 
         if not license_number[:3].isupper():
             raise ValidationError(
@@ -19,11 +21,15 @@ class LicenseNumberMixin:
             )
 
         if not license_number[:3].isalpha():
-            raise ValidationError("First 2 characters must be uppercase letters")
+            raise ValidationError(
+                "First 2 characters must be uppercase letters"
+            )
 
         # Check if the last 5 characters are digits
         if not license_number[3:].isdigit():
-            raise ValidationError("Last 5 characters must be digits")
+            raise ValidationError(
+                "Last 5 characters must be digits"
+            )
 
         return license_number
 
